@@ -7,7 +7,7 @@ import sanitizeHtml from 'sanitize-html';
  * Add a comment
  * @param req
  * @param res
- * @returns void
+ * @returns Comment
  */
 export function addComment(req, res) {
   if (!req.body.comment.author || !req.body.comment.message || !req.params.cuid) {
@@ -33,7 +33,7 @@ export function addComment(req, res) {
  * Get comments per post
  * @param req
  * @param res
- * @returns void
+ * @returns Comment
  */
 export function getCommentsPerPost(req, res) {
   Comment.find({ postCuid: req.params.cuid }).sort('-dateAdded').exec((err, comments) => {
@@ -49,7 +49,7 @@ export function getCommentsPerPost(req, res) {
  * Update a comment
  * @param req
  * @param res
- * @returns void
+ * @returns Comment
  */
 export function updateComment(req, res) {
   Comment.findOneAndUpdate({ _id: req.params.id }, { message: req.body.comment.message }).exec((err, comment) => {
@@ -65,7 +65,7 @@ export function updateComment(req, res) {
  * Delete a comment
  * @param req
  * @param res
- * @returns void
+ * @returns Comment
  */
 export function deleteComment(req, res) {
   Comment.findOne({ _id: req.params.id }).exec((err, comment) => {
