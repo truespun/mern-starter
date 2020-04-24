@@ -11,7 +11,7 @@ import sanitizeHtml from 'sanitize-html';
  */
 export function addComment(req, res) {
   if (!req.body.comment.author || !req.body.comment.message || !req.params.cuid) {
-    res.status(403).end();
+    res.status(400).end();
   }
 
   const newComment = new Comment(req.body.comment);
