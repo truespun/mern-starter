@@ -1,3 +1,4 @@
+
 import Post from '../models/post';
 import cuid from 'cuid';
 import slug from 'limax';
@@ -78,3 +79,4 @@ export function deletePost(req, res) {
     });
   });
 }
+
